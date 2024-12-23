@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
-import 'package:weather_app/pages/place_page.dart';
+import 'package:weather_app/pages/calculator_page.dart';
 import 'package:weather_app/pages/settings_page.dart';
-import 'package:weather_app/pages/weather_page.dart';
+import 'package:weather_app/pages/main_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,8 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
   List pages = [
-    const WeatherPage(),
-    const PlacePage(),
+    const MainPage(),
+    const CalculatorPage(),
     const SettingsPage()
   ];
   @override
