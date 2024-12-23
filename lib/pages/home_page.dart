@@ -21,11 +21,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       body: pages[selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: WaterDropNavBar(
+          backgroundColor: Colors.transparent,
           waterDropColor: Colors.blue,
           barItems: [
             BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),

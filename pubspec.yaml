@@ -13,6 +13,7 @@ dependencies:
   water_drop_nav_bar: ^2.2.2
   chart_sparkline: ^1.1.1
   fl_animated_linechart: ^1.2.0
+  fl_chart: ^0.69.2
 
 dev_dependencies:
   flutter_test:
