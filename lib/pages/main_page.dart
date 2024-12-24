@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fl_animated_linechart/fl_animated_linechart.dart';
+import 'package:weather_app/components/bmi_tile.dart';
+import 'package:weather_app/components/chart_line.dart';
+import 'package:weather_app/models/bmi_data.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -11,39 +13,33 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final List<BmiData> bmiHistory = [
-  BmiData(DateTime(2024, 1, 1), 22.5),
-  BmiData(DateTime(2024, 2, 1), 23.0),
-  BmiData(DateTime(2024, 3, 1), 22.8),
+    BmiData(DateTime(2024, 1, 1), 22.5),
+    BmiData(DateTime(2024, 2, 1), 23.0),
+    BmiData(DateTime(2024, 3, 1), 22.8),
   ];
 
   @override
   Widget build(BuildContext context) {
-     return const Column(
+     return  Column(
        children: [
-          SizedBox(height: 80,),
-         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(Icons.person_outlined,size: 30,),
-              Text("User",
-              style: TextStyle(fontSize: 20),),
-            ],
-          ),
-        ),
-         SizedBox(height: 20,),
-         Text("Your Statistics",
+        const SizedBox(height: 80,),
+        const SizedBox(height: 20,),
+        const Text("Your Statistics",
         style: TextStyle(color: Colors.blue, fontSize: 28,fontWeight: FontWeight.bold),),
-        SizedBox(height: 20,),
+        const SizedBox(height: 20,),
+        Container(
+          margin: const EdgeInsets.only(right: 35),
+          child: ChartLine(bmiHistory: bmiHistory)
+          ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: bmiHistory.length,
+            itemBuilder: (context, index){
+              return BmiTile(bmiData: bmiHistory[index]);
+            },),
+        )
        ],
      );
   }
 }
 
-class BmiData {
-  final DateTime date;
-  final double bmi;
-
-  BmiData(this.date, this.bmi);
-}

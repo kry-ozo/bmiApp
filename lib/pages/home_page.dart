@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           waterDropColor: Colors.blue,
           barItems: [
             BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
-            BarItem(filledIcon: Icons.place , outlinedIcon: Icons.place_outlined),
+            BarItem(filledIcon: Icons.calculate , outlinedIcon: Icons.calculate_outlined),
             BarItem(filledIcon: Icons.settings, outlinedIcon: Icons.settings_outlined)
           ], selectedIndex: selectedIndex, onItemSelected: (index){
           setState(() {
@@ -41,3 +41,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
