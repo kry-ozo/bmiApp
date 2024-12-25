@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/components/bmi_tile.dart';
 import 'package:weather_app/components/chart_line.dart';
 import 'package:weather_app/models/bmi_data.dart';
+import 'package:weather_app/services/bmi_service.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -12,11 +13,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<BmiData> bmiHistory = [
-    BmiData(DateTime(2024, 1, 1), 22.5),
-    BmiData(DateTime(2024, 2, 1), 23.0),
-    BmiData(DateTime(2024, 3, 1), 22.8),
-  ];
+  final List<BmiData> bmiHistory = BmiService().getAllBmiData();
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +22,21 @@ class _MainPageState extends State<MainPage> {
         const SizedBox(height: 80,),
         const SizedBox(height: 20,),
         const Text("Your Statistics",
-        style: TextStyle(color: Colors.blue, fontSize: 28,fontWeight: FontWeight.bold),),
+        style: TextStyle(color: Colors.blue, fontSize: 28,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
         const SizedBox(height: 20,),
         Container(
           margin: const EdgeInsets.only(right: 35),
-          child: ChartLine(bmiHistory: bmiHistory)
+          child: Builder(
+            builder: (context){
+              if(bmiHistory.isEmpty){
+                return Text("Start calculating your BMI in calculator section below", style: TextStyle(color: Colors.blue, fontSize: 24,), textAlign: TextAlign.center,);
+              }else{
+                return ChartLine(bmiHistory: bmiHistory);
+              }
+            } 
+            )
+          
+            
           ),
         Expanded(
           child: ListView.builder(
