@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 import 'package:weather_app/pages/calculator_page.dart';
 import 'package:weather_app/pages/settings_page.dart';
 import 'package:weather_app/pages/main_page.dart';
+import 'package:weather_app/services/bmi_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,12 +14,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final TextEditingController weightData = TextEditingController();
+  final TextEditingController heightData = TextEditingController();
   int selectedIndex = 0;
-  List pages = [
-    const MainPage(),
-    const CalculatorPage(),
-    const SettingsPage()
-  ];
+  late List<Widget> pages;
+
+  @override
+  void initState() {
+    super.initState();
+    pages = [
+      const MainPage(),
+      CalculatorPage(
+        weightControler: weightData,
+        heightControler: heightData,
+        addBmiData: addBmiData,
+      ),
+      const SettingsPage(),
+    ];
+  }
+
+  void addBmiData(){
+    final int weight = int.parse(weightData.text);
+    final int height = int.parse(weightData.text);
+    final double heightInMeters = height/100;
+    final bmi  =  weight / (heightInMeters * heightInMeters);
+
+    final date = DateTime.now();
+    print(Provider.of<BmiProvider>(context).bmiData);
+
+    Provider.of<BmiProvider>(context, listen: false).addBmiData(bmi, date);
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

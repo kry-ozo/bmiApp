@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/components/bmi_tile.dart';
 import 'package:weather_app/components/chart_line.dart';
 import 'package:weather_app/models/bmi_data.dart';
-import 'package:weather_app/services/bmi_service.dart';
+import 'package:weather_app/services/bmi_provider.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -13,11 +14,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final List<BmiData> bmiHistory = BmiService().getAllBmiData();
+  List<BmiData> bmiHistory = [];
 
   @override
   Widget build(BuildContext context) {
-     return  Column(
+     return Consumer<BmiProvider>(builder: (context, bmiProvider, child){
+      return  Column(
        children: [
         const SizedBox(height: 80,),
         const SizedBox(height: 20,),
@@ -28,10 +30,10 @@ class _MainPageState extends State<MainPage> {
           margin: const EdgeInsets.only(right: 35),
           child: Builder(
             builder: (context){
-              if(bmiHistory.isEmpty){
-                return Text("Start calculating your BMI in calculator section below", style: TextStyle(color: Colors.blue, fontSize: 24,), textAlign: TextAlign.center,);
+              if(bmiProvider.bmiData.isEmpty){
+                return const Text("Start calculating your BMI in calculator section below", style: TextStyle(color: Colors.blue, fontSize: 24,), textAlign: TextAlign.center,);
               }else{
-                return ChartLine(bmiHistory: bmiHistory);
+                return ChartLine(bmiHistory: bmiProvider.bmiData);
               }
             } 
             )
@@ -47,6 +49,7 @@ class _MainPageState extends State<MainPage> {
         )
        ],
      );
+     } );
   }
 }
 
