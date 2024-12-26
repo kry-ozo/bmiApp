@@ -35,12 +35,11 @@ class _HomePageState extends State<HomePage> {
 
   void addBmiData(){
     final int weight = int.parse(weightData.text);
-    final int height = int.parse(weightData.text);
+    final int height = int.parse(heightData.text);
     final double heightInMeters = height/100;
-    final bmi  =  weight / (heightInMeters * heightInMeters);
-
+    final double bmi  = ((weight / (heightInMeters * heightInMeters)*10).round()) / 10;
+    
     final date = DateTime.now();
-    print(Provider.of<BmiProvider>(context).bmiData);
 
     Provider.of<BmiProvider>(context, listen: false).addBmiData(bmi, date);
   }

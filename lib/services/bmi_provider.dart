@@ -3,7 +3,11 @@ import 'package:weather_app/models/bmi_data.dart';
 import 'package:uuid/uuid.dart';
 
 class BmiProvider with ChangeNotifier{
-  final List<BmiData> _bmiData = [];
+  final List<BmiData> _bmiData = [
+    BmiData("1",DateTime(2024, 1, 1), 22.5),
+    BmiData("2",DateTime(2024, 2, 1), 23.0),
+    BmiData("3",DateTime(2024, 3, 1), 22.8),
+  ];
 
   
 

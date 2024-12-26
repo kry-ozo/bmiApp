@@ -14,8 +14,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List<BmiData> bmiHistory = [];
-
+  
   @override
   Widget build(BuildContext context) {
      return Consumer<BmiProvider>(builder: (context, bmiProvider, child){
@@ -42,9 +41,9 @@ class _MainPageState extends State<MainPage> {
           ),
         Expanded(
           child: ListView.builder(
-            itemCount: bmiHistory.length,
+            itemCount: bmiProvider.bmiData.length,
             itemBuilder: (context, index){
-              return BmiTile(bmiData: bmiHistory[index]);
+              return BmiTile(bmiData: bmiProvider.bmiData[index]);
             },),
         )
        ],

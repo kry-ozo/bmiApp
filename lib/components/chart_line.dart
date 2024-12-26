@@ -6,6 +6,7 @@ class ChartLine extends StatelessWidget {
   final List<BmiData> bmiHistory;
   const ChartLine({super.key, required this.bmiHistory});
   
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,8 +16,8 @@ class ChartLine extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: LineChart(
           LineChartData(
-            maxY: 30.0,
-            minY: 15.0,
+            maxY: 63.0,
+            minY: 12.0,
             gridData: FlGridData(show: true),
             titlesData: FlTitlesData(
               leftTitles: const AxisTitles(
