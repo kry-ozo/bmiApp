@@ -42,6 +42,9 @@ class _HomePageState extends State<HomePage> {
     final date = DateTime.now();
 
     Provider.of<BmiProvider>(context, listen: false).addBmiData(bmi, date);
+    weightData.clear();
+    heightData.clear();
+    
     setState(() {
       selectedIndex = 0;
     });
