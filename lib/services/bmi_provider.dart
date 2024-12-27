@@ -37,7 +37,6 @@ class BmiProvider with ChangeNotifier{
     }else{
       _bmiSettings["weight"] = "kg";
     }
-    
   }
 
   void changeHeight(String oldValue){
@@ -46,6 +45,5 @@ class BmiProvider with ChangeNotifier{
     }else{
       _bmiSettings["height"] = "cm";
     }
-    
   }
 }
