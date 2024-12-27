@@ -43,7 +43,7 @@ class _MainPageState extends State<MainPage> {
           child: ListView.builder(
             itemCount: bmiProvider.bmiData.length,
             itemBuilder: (context, index){
-              return BmiTile(bmiData: bmiProvider.bmiData[index]);
+              return BmiTile(bmiData: bmiProvider.bmiData[index], onTap: ()=>bmiProvider.deleteBmiData(bmiProvider.bmiData[index].id),);
             },),
         )
        ],
