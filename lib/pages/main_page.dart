@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather_app/components/bmi_tile.dart';
 import 'package:weather_app/components/chart_line.dart';
-import 'package:weather_app/models/bmi_data.dart';
 import 'package:weather_app/services/bmi_provider.dart';
 
 

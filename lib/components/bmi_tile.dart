@@ -9,7 +9,7 @@ class BmiTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.scale_outlined),
+      leading: const Icon(Icons.insights_outlined),
       title: Text("Date:${bmiData.date.toString().substring(0,10)} Result:${bmiData.bmi}"),
       trailing: GestureDetector(onTap: onTap, child: const Icon(Icons.delete_outline),),
     );
