@@ -31,19 +31,13 @@ class BmiProvider with ChangeNotifier{
     notifyListeners();
   }
 
-  void changeWeight(String oldValue){
-    if(oldValue == "kg"){
-      _bmiSettings["weight"] = "lbs";
-    }else{
-      _bmiSettings["weight"] = "kg";
-    }
+  void changeWeight(String newValue){
+   _bmiSettings["weight"] = newValue;
+    notifyListeners();
   }
 
-  void changeHeight(String oldValue){
-    if(oldValue == "cm"){
-      _bmiSettings["height"] = "ft";
-    }else{
-      _bmiSettings["height"] = "cm";
-    }
+  void changeHeight(String newValue){
+    _bmiSettings["height"] = newValue;
+    notifyListeners();
   }
 }
