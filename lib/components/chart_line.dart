@@ -10,22 +10,21 @@ class ChartLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-
       height: 350,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
         child: LineChart(
           LineChartData(
             maxY: 63.0,
             minY: 12.0,
-            gridData: FlGridData(show: true),
+            gridData: const FlGridData(show: true),
             titlesData: FlTitlesData(
               leftTitles: const AxisTitles(
-                sideTitles: SideTitles(showTitles: true, reservedSize: 50),
+                sideTitles: SideTitles(showTitles: true, reservedSize: 25),
               ),
               bottomTitles: AxisTitles(
                 sideTitles: SideTitles(
-                  interval: Duration(days: 30).inMilliseconds.toDouble(),
+                  interval: const Duration(days: 30).inMilliseconds.toDouble(),
                   showTitles: false,
                   reservedSize: 30,
                   getTitlesWidget: (value, meta) {
@@ -34,8 +33,8 @@ class ChartLine extends StatelessWidget {
                   },
                 ),
               ),
-              topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false, reservedSize: 30)),
-              rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false))
+              topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false, reservedSize: 30)),
+              rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: true, reservedSize: 25))
             ),
             borderData: FlBorderData(show: true),
             lineBarsData: [

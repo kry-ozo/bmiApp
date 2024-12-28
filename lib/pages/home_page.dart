@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     int weight = int.parse(weightData.text);
     final int height = int.parse(heightData.text);
     
-    final settings = Provider.of<BmiProvider>(context).getBmiSettings;
+    final settings = Provider.of<BmiProvider>(context, listen: false).getBmiSettings;
     final double heightInMeters = height/100;
 
     if(settings["weight"]=="lbs"){

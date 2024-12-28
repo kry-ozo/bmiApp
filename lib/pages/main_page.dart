@@ -24,29 +24,29 @@ class _MainPageState extends State<MainPage> {
         const Text("Your Statistics",
         style: TextStyle(color: Colors.blue, fontSize: 28,fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
         const SizedBox(height: 20,),
-        Container(
-          margin: const EdgeInsets.only(right: 35),
-          child: Builder(
+        Builder(
             builder: (context){
               if(bmiProvider.bmiData.isEmpty){
-                return const Text("Start calculating your BMI in calculator section below", style: TextStyle(color: Colors.blue, fontSize: 24,), textAlign: TextAlign.center,);
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child:  Text("Start calculating your BMI in calculator section below", style: TextStyle(color: Colors.blue, fontSize: 24,), textAlign: TextAlign.center,),
+                );
               }else{
-                return ChartLine(bmiHistory: bmiProvider.bmiData);
+                return Center(child: ChartLine(bmiHistory: bmiProvider.bmiData));
               }
             } 
-            )
-          
-            
-          ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: bmiProvider.bmiData.length,
-            itemBuilder: (context, index){
-              return BmiTile(bmiData: bmiProvider.bmiData[index], onTap: ()=>bmiProvider.deleteBmiData(bmiProvider.bmiData[index].id),);
-            },),
-        )
+            ),  
+          const SizedBox(height: 35,),
+          bmiProvider.bmiData.isNotEmpty ? const Text("Last logs of your BMI", style: TextStyle(color: Colors.blue, fontSize: 28,fontWeight: FontWeight.bold), textAlign: TextAlign.center,) : const Text(""),
+          Expanded(
+            child: ListView.builder(
+              itemCount: bmiProvider.bmiData.length,
+              itemBuilder: (context, index){
+                return BmiTile(bmiData: bmiProvider.bmiData[index], onTap: ()=>bmiProvider.deleteBmiData(bmiProvider.bmiData[index].id),);
+              },),
+          )
        ],
-     );
+      );
      } );
   }
 }

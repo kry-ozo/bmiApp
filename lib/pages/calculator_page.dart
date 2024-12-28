@@ -27,9 +27,9 @@ class CalculatorPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
                children: [
-                Expanded(child: TextField(decoration: InputDecoration(hintText: "your weight (${Provider.of<BmiProvider>(context).getBmiSettings["weight"]})", border: OutlineInputBorder()), textAlign: TextAlign.center, controller: weightControler,),),
+                Expanded(child: TextField(decoration: InputDecoration(hintText: "your weight (${Provider.of<BmiProvider>(context).getBmiSettings["weight"]})", border: const OutlineInputBorder()), textAlign: TextAlign.center, controller: weightControler,),),
                 const SizedBox(height: 20,width: 20,),
-                Expanded(child: TextField(decoration: InputDecoration(hintText: "your height (${Provider.of<BmiProvider>(context).getBmiSettings["height"]})", border: OutlineInputBorder()), textAlign: TextAlign.center, controller: heightControler,),),
+                Expanded(child: TextField(decoration: InputDecoration(hintText: "your height (${Provider.of<BmiProvider>(context).getBmiSettings["height"]})", border: const OutlineInputBorder()), textAlign: TextAlign.center, controller: heightControler,),),
             ],
         ),
       ),
